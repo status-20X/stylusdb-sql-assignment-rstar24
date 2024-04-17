@@ -10,10 +10,11 @@ test('Read CSV File', async () => {
 });
 
 test('Parse SQL Query', () => {
-    const query = 'SELECT id, name FROM sample';
+    const query = 'SELECT id,age FROM sample';
     const parsed = parseQuery(query);
+
     expect(parsed).toEqual({
-        fields: ['id', 'name'],
-        table: 'sample'
+        fields: ['id', 'age'],
+        table: 'sample',
     });
 });
