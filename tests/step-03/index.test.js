@@ -10,11 +10,20 @@ test('Read CSV File', async () => {
 });
 
 test('Parse SQL Query', () => {
-    const query = 'SELECT id,age FROM sample';
+    const query = 'SELECT id, name FROM sample';
     const parsed = parseQuery(query);
-
     expect(parsed).toEqual({
-        fields: ['id', 'age'],
-        table: 'sample',
+        fields: ['id', 'name'],
+        table: 'sample'
     });
+});
+
+test('This test will check if invalid query should cause error',() => {
+    const query = '124 456';
+    // expect(parseQuery(query)).toThrow(
+    //     new Error('Invalid query format')
+    // );
+    expect( () => {
+        parseQuery(query)
+    }).toThrow();
 });
