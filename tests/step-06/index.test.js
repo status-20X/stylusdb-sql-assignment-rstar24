@@ -77,3 +77,8 @@ test('Execute SQL Query with Multiple WHERE Clause', async () => {
     expect(result.length).not.toBe(1);
     expect(result[0]).toEqual({ id: '1', name: 'John' });
 });
+
+test('Must throw error when xor operator is used', async () => {
+    const query = 'SELECT id, name FROM sample WHERE age ^ 30 AND name = John';
+    expect(() => executeSELECTQuery(query).toThrow('XOR not Allowed'));
+});
