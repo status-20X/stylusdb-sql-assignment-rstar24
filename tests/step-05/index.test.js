@@ -16,7 +16,7 @@ test('Parse SQL Query', () => {
     expect(parsed).toEqual({
         fields: ['id', 'name'],
         table: 'sample',
-        whereClause: null
+        whereClause : null
     });
 });
 
@@ -27,7 +27,7 @@ test('Execute SQL Query', async () => {
     expect(result[0]).toHaveProperty('id');
     expect(result[0]).toHaveProperty('name');
     expect(result[0]).not.toHaveProperty('age');
-    expect(result[0]).toEqual({ id: '1', name: 'John' });
+    expect(result[0]).toEqual({ id: '1', name: 'John'});
 });
 
 test('Parse SQL Query with WHERE Clause', () => {
@@ -47,4 +47,7 @@ test('Execute SQL Query with WHERE Clause', async () => {
     expect(result[0]).toHaveProperty('id');
     expect(result[0]).toHaveProperty('name');
     expect(result[0].id).toBe('2');
+    // Extra cases in step 5
+    expect(result[0].name).not.toEqual('jane');
+    expect(result[0].name).toEqual('Jane');
 });
